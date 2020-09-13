@@ -1,0 +1,18 @@
+{
+  "type": "mssql",
+  "host": "localhost",
+  "port": 1433,
+  "username": "sa",
+  "password": "0N@BJ44o",
+  "database": "ignicaoCRUD",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/models/**/*.js"],
+  "migrations": ["src/migration/**/*.js"],
+  "subscribers": ["src/subscriber/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
