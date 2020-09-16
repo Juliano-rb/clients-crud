@@ -8,10 +8,18 @@
       <div id="clients">
         <ul>
           <li>
-            <Client />
+            <Client
+              name="A name"
+              email="a email"
+              v-bind:tags="[{id: 2,name: 'a tag',color: 'red' },{id: 1,name: 'another tag',color: 'blue' },]"
+            />
           </li>
           <li>
-            <Client />
+            <Client
+              name="another name"
+              email="another email@"
+              v-bind:tags="[{id: 2,name: 'a tag',color: 'green' }]"
+            />
           </li>
         </ul>
       </div>

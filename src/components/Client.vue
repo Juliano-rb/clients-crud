@@ -6,40 +6,23 @@
         <br />
         <span class="email">{{ email }}</span>
       </div>
-      <div class="tags">
-        <span
-          class="tag"
-          v-for="tag in tags"
-          :key="tag.id"
-          v-bind:style="{ backgroundColor: tag.color}"
-        >{{tag.name}}</span>
-      </div>
+      <Tags :tags="tags" />
     </div>
     <input type="button" value="edit" id="edit" />
   </div>
 </template>
 
 <script>
+import Tags from "./Tags.vue";
+
 export default {
   name: "Client",
-  data() {
-    return {
-      name: "A name",
-      email: "A email",
-      tags: [
-        {
-          id: 1,
-          name: "a tag",
-          color: "green",
-        },
-        {
-          id: 2,
-          name: "another tag",
-          color: "red",
-        },
-      ],
-    };
+  props: {
+    name: String,
+    email: String,
+    tags: Array,
   },
+  components: { Tags },
 };
 </script>
 
