@@ -109,6 +109,31 @@ const ClientController = {
       return res.json({ error: e });
     }
   },
+  async removeTag(req, res) {
+    try {
+      const { idClient, idTag } = req.params;
+      console.log(idClient, idTag);
+
+      const clientRepo = getRepository(Client);
+      const client = await clientRepo.findOne({
+        where: { id: idClient },
+        relations: ['tags'],
+      });
+
+      if (!client) return res.json({ error: 'Client ' + idClient + ' does not exists' });
+
+      client.tags = client.tags.filter((tag) => tag.id != idTag);
+      console.log(client);
+
+      clientRepo.save(client);
+
+      console.log(client);
+      return res.json(client);
+    } catch (e) {
+      console.error(e);
+      return res.json({ error: e });
+    }
+  },
 };
 
 module.exports = ClientController;
