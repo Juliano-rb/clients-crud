@@ -7,6 +7,12 @@ const ClientController = {
     const client = await repo.find();
     return res.json(client);
   },
+  async add(req, res) {
+    const repo = getRepository(Client);
+    const client = await repo.save(req.body);
+
+    return res.json(client);
+  },
 };
 
 module.exports = ClientController;

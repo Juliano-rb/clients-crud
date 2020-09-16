@@ -8,5 +8,6 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/client', ClientController.list);
+routes.post('/client', ClientController.add);
 
 module.exports = routes;
