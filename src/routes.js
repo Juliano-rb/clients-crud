@@ -13,7 +13,7 @@ routes.get('/client/:id', ClientController.find);
 routes.post('/client', ClientController.add);
 routes.delete('/client/:id', ClientController.delete);
 routes.patch('/client/:id', ClientController.update);
-routes.post('/client/:idClient/addtag/:idTag', ClientController.addTag);
+routes.post('/client/:idClient/tag/:idTag', ClientController.addTag);
 routes.delete('/client/:idClient/tag/:idTag', ClientController.removeTag);
 
 routes.get('/tag', TagController.list);
