@@ -31,6 +31,19 @@ const ClientController = {
       console.log(req.params.id);
       const repo = getRepository(Client);
       const client = await repo.findOne(clientId);
+  async delete(req, res) {
+    try {
+      const clientId = req.params.id;
+      const repo = getRepository(Client);
+      const client = await repo.findOne(clientId);
+
+      repo.remove(client);
+      return res.json({ success: 'Client ' + clientId + ' removed' });
+    } catch (e) {
+      console.error(e);
+      return res.json({ error: e });
+    }
+  },
       return res.json(client);
     } catch (e) {
       console.error(e);
