@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Clients />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Clients from "./components/Clients.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Clients,
+  },
+};
 </script>
 
 <style>
@@ -21,8 +20,18 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
+  margin: 0 auto;
   margin-top: 60px;
+  max-width: 800px;
+  max-height: 600px;
+  border-radius: 2px;
+  border: solid honeydew;
+  background-color: honeydew;
+}
+
+body {
+  background-color: rgb(211, 211, 211);
 }
 </style>
