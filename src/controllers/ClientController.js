@@ -1,5 +1,6 @@
 const getRepository = require('typeorm').getRepository;
 const Client = require('../models/Client.js');
+const Tag = require('../models/Tag.js');
 
 const ClientController = {
   async list(req, res) {
@@ -75,6 +76,32 @@ const ClientController = {
       }
 
       repo.save(client);
+
+      return res.json(client);
+    } catch (e) {
+      console.error(e);
+      return res.json({ error: e });
+    }
+  },
+  async addTag(req, res) {
+    try {
+      const { idClient, idTag } = req.params;
+
+      const clientRepo = getRepository(Client);
+      const client = await clientRepo.findOne({
+        where: { id: idClient },
+        relations: ['tags'],
+      });
+
+      const tagRepo = getRepository(Tag);
+      const tag = await tagRepo.findOne(idTag);
+
+      if (!client) return res.json({ error: 'Client ' + idClient + ' does not exists' });
+      if (!tag) return res.json({ error: 'Tag ' + idTag + ' does not exists' });
+
+      client.tags = [...client.tags, tag];
+
+      clientRepo.save(client);
 
       return res.json(client);
     } catch (e) {
