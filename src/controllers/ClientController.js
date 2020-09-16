@@ -8,10 +8,15 @@ const ClientController = {
     return res.json(client);
   },
   async add(req, res) {
-    const repo = getRepository(Client);
-    const client = await repo.save(req.body);
+    try {
+      const repo = getRepository(Client);
+      const client = await repo.save(req.body);
 
-    return res.json(client);
+      return res.json(client);
+    } catch (e) {
+      console.error(e);
+      return res.json({ error: e });
+    }
   },
   async find(req, res) {
     try {
