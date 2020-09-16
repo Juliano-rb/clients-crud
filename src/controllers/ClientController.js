@@ -6,7 +6,10 @@ const ClientController = {
     try {
       const repo = getRepository(Client);
       // filtra os clientes se passar um filtro no body
-      const client = await repo.find(req.body);
+      const client = await repo.find({
+        where: req.body,
+        relations: ['tags'],
+      });
 
       return res.json(client);
     } catch (e) {
@@ -30,7 +33,10 @@ const ClientController = {
       const clientId = req.params.id;
       console.log(req.params.id);
       const repo = getRepository(Client);
-      const client = await repo.findOne(clientId);
+      const client = await repo.findOne({
+        where: { id: clientId },
+        relations: ['tags'],
+      });
       return res.json(client);
     } catch (e) {
       console.error(e);
