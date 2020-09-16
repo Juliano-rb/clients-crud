@@ -7,6 +7,6 @@ routes.get('/', (req, res) => {
   return res.send(`<h1>Olá ( ͡° ͜ʖ ͡°)</h1>`);
 });
 
-routes.get('/clients', ClientController.list);
+routes.get('/client', ClientController.list);
 
 module.exports = routes;
