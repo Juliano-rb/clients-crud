@@ -10,5 +10,7 @@ routes.get('/', (req, res) => {
 routes.get('/client', ClientController.list);
 routes.get('/client/:id', ClientController.find);
 routes.post('/client', ClientController.add);
+routes.delete('/client/:id', ClientController.delete);
+routes.patch('/client/:id', ClientController.update);
 
 module.exports = routes;

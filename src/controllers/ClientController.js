@@ -31,11 +31,19 @@ const ClientController = {
       console.log(req.params.id);
       const repo = getRepository(Client);
       const client = await repo.findOne(clientId);
+      return res.json(client);
+    } catch (e) {
+      console.error(e);
+      return res.json({ error: e });
+    }
+  },
   async delete(req, res) {
     try {
       const clientId = req.params.id;
       const repo = getRepository(Client);
       const client = await repo.findOne(clientId);
+
+      if (!client) return res.json({ error: 'Client ' + clientId + ' does not exists' });
 
       repo.remove(client);
       return res.json({ success: 'Client ' + clientId + ' removed' });
@@ -44,6 +52,24 @@ const ClientController = {
       return res.json({ error: e });
     }
   },
+  async update(req, res) {
+    try {
+      const newClient = req.body;
+
+      const clientId = req.params.id;
+      const repo = getRepository(Client);
+      const client = await repo.findOne(clientId);
+
+      if (!client) return res.json({ error: 'Client ' + clientId + ' does not exists' });
+
+      client.name = newClient.name;
+      client.email = newClient.email;
+      if (newClient.tags) {
+        client.tags = newClient.tags;
+      }
+
+      repo.save(client);
+
       return res.json(client);
     } catch (e) {
       console.error(e);
