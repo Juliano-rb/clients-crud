@@ -13,6 +13,7 @@ module.exports = new typeorm.EntitySchema({
     },
     color: {
       type: 'varchar',
+      nullable: true,
     },
   },
 });
