@@ -15,4 +15,12 @@ module.exports = new typeorm.EntitySchema({
       type: 'varchar',
     },
   },
+  relations: {
+    tags: {
+      target: 'Tag',
+      type: 'many-to-many',
+      joinTable: true,
+      cascade: true,
+    },
+  },
 });
