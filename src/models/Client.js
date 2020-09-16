@@ -20,7 +20,7 @@ module.exports = new typeorm.EntitySchema({
       target: 'Tag',
       type: 'many-to-many',
       joinTable: true,
-      cascade: true,
+      cascade: ['insert', 'update'],
     },
   },
 });
