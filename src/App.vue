@@ -25,7 +25,7 @@ export default {
   margin: 0 auto;
   margin-top: 60px;
   max-width: 800px;
-  max-height: 600px;
+  max-height: 500px;
   border-radius: 2px;
   border: solid honeydew;
   background-color: honeydew;

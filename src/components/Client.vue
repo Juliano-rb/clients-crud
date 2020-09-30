@@ -8,7 +8,7 @@
       </div>
       <Tags :tags="tags" />
     </div>
-    <input type="button" value="edit" id="edit" />
+    <!-- <input type="button" value="edit" id="edit" /> -->
   </div>
 </template>
 

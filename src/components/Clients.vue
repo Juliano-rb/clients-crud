@@ -3,22 +3,22 @@
     <h1>Clientes</h1>
     <div class="client-list-container">
       <div id="search-box">
-        <input type="search" name="client-search" id="client-search" />
+        <input
+          type="search"
+          name="client-search"
+          id="client-search"
+          placeholder="Buscar"
+          v-model="filter"
+        />
       </div>
       <div id="clients">
         <ul>
-          <li>
+          <li v-for="client in clientsBuff" :key="client.id">
             <Client
-              name="A name"
-              email="a email"
-              v-bind:tags="[{id: 2,name: 'a tag',color: 'red' },{id: 1,name: 'another tag',color: 'blue' },]"
-            />
-          </li>
-          <li>
-            <Client
-              name="another name"
-              email="another email@"
-              v-bind:tags="[{id: 2,name: 'a tag',color: 'green' }]"
+              v-bind:id="client.id"
+              v-bind:name="client.name"
+              v-bind:email="client.email"
+              v-bind:tags="client.tags"
             />
           </li>
         </ul>
@@ -29,10 +29,46 @@
 
 <script>
 import Client from "./Client.vue";
+import axios from "axios";
 
 export default {
   name: "Clients",
+  data() {
+    return {
+      clients: [],
+      filter: "",
+    };
+  },
   props: {},
+  created: function () {
+    this.fetchClients();
+  },
+  methods: {
+    fetchClients() {
+      axios
+        .get("http://localhost:3333/client")
+        .then((response) => {
+          // handle success
+          console.log(response);
+          this.clients = response.data;
+
+          console.log(this.clients);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+    },
+  },
+  computed:{
+    clientsBuff(){
+      const clientsFiltered = this.clients.filter( client => {return client.name.search(this.filter) >= 0})
+      return clientsFiltered;
+    }
+  },
   components: {
     Client,
   },
@@ -43,6 +79,11 @@ export default {
 <style scoped>
 .clients {
   margin: 30px;
+}
+
+#clients {
+  overflow-y: scroll;
+  max-height: 400px;
 }
 
 .client-list-container {
