@@ -63,11 +63,14 @@ export default {
         });
     },
   },
-  computed:{
-    clientsBuff(){
-      const clientsFiltered = this.clients.filter( client => {return client.name.search(this.filter) >= 0})
+  computed: {
+    clientsBuff() {
+      const clientsFiltered = this.clients.filter(
+        (client) =>
+          client.name.toLowerCase().search(this.filter.toLowerCase()) >= 0
+      );
       return clientsFiltered;
-    }
+    },
   },
   components: {
     Client,
