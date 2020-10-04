@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <a id="saveBtn" name="saveBtn" href="#">save</a>
+    <a id="saveBtn" @click="saveClient" name="saveBtn" href="#">save</a>
   </div>
 </template>
 
@@ -55,6 +55,19 @@ export default {
         })
         .then(function () {
           // always executed
+        });
+    },
+    saveClient() {
+      const data = {
+        id: this.id,
+        name: this.name,
+        email: this.email,
+      };
+      axios
+        .patch(`http://localhost:3333/client/${this.$route.params.id}`, data)
+        .then((response) => {
+          console.log(response);
+          this.$router.push("/");
         });
     },
   },
