@@ -8,7 +8,7 @@
       </div>
       <Tags :tags="tags" />
     </div>
-    <!-- <input type="button" value="edit" id="edit" /> -->
+    <router-link to="/client" class="edtBtn">edit</router-link>
   </div>
 </template>
 
@@ -79,7 +79,7 @@ export default {
   justify-content: flex-start;
 }
 
-#edit {
+.edtBtn {
   position: absolute;
   right: 5px;
   bottom: 0px;

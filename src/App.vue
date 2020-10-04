@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <Clients />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Clients from "./components/Clients.vue";
-
 export default {
   name: "App",
-  components: {
-    Clients,
-  },
 };
 </script>
 
