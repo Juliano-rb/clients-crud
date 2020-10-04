@@ -8,9 +8,7 @@
       </div>
       <Tags :tags="tags" />
     </div>
-    <router-link
-      :to="{ name: 'clientEdit', params: { id: '2' } }"
-      class="edtBtn"
+    <router-link :to="{ name: 'clientEdit', params: { id: id } }" class="edtBtn"
       >edit</router-link
     >
   </div>
