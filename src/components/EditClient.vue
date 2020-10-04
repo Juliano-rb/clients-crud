@@ -13,12 +13,14 @@
         <TagsEdit :tags="tags" />
       </div>
     </div>
+
+    <a id="saveBtn" name="saveBtn" href="#">save</a>
   </div>
 </template>
 
 <script>
 import TagsEdit from "./TagsEdit.vue";
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   name: "EditClient",
@@ -34,6 +36,27 @@ export default {
   },
   created() {
     console.log(this.$route.params);
+    this.fetchClient();
+  },
+  methods: {
+    fetchClient() {
+      axios
+        .get(`http://localhost:3333/client/${this.$route.params.id}`)
+        .then((response) => {
+          // handle success
+          console.log(response);
+          this.name = response.data.name;
+          this.email = response.data.email;
+          this.tags = response.data.tags;
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+    },
   },
   components: { TagsEdit },
 };
@@ -101,5 +124,8 @@ a {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-start;
+}
+#saveBtn {
+  float: right;
 }
 </style>

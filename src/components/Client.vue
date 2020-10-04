@@ -8,7 +8,11 @@
       </div>
       <Tags :tags="tags" />
     </div>
-    <router-link to="/client" class="edtBtn">edit</router-link>
+    <router-link
+      :to="{ name: 'clientEdit', params: { id: '2' } }"
+      class="edtBtn"
+      >edit</router-link
+    >
   </div>
 </template>
 
@@ -18,6 +22,7 @@ import Tags from "./Tags.vue";
 export default {
   name: "Client",
   props: {
+    id: String,
     name: String,
     email: String,
     tags: Array,
