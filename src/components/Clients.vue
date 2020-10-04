@@ -24,6 +24,7 @@
         </ul>
       </div>
     </div>
+    <router-link to="/client" class="newBtn">New</router-link>
   </div>
 </template>
 
@@ -111,5 +112,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+.newBtn {
+  float: right;
 }
 </style>

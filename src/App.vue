@@ -18,9 +18,9 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 40px;
   max-width: 800px;
-  max-height: 500px;
+  max-height: 550px;
   border-radius: 2px;
   border: solid honeydew;
   background-color: honeydew;

@@ -6,7 +6,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: Clients },
-    { path: "/client", component: EditClient },
+    { path: "/client/", component: EditClient },
+    { path: "/client/:id", component: EditClient },
   ],
 });
 
