@@ -58,14 +58,23 @@ export default {
         });
     },
     saveClient() {
+      const clientId = this.$route.params.id;
       const data = {
-        id: this.id,
         name: this.name,
         email: this.email,
       };
-      axios
-        .patch(`http://localhost:3333/client/${this.$route.params.id}`, data)
-        .then((response) => {
+
+      // update
+      if (clientId)
+        axios
+          .patch(`http://localhost:3333/client/${this.$route.params.id}`, data)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/");
+          });
+      // create new
+      else
+        axios.post(`http://localhost:3333/client`, data).then((response) => {
           console.log(response);
           this.$router.push("/");
         });
