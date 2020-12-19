@@ -1,10 +1,7 @@
 {
-  "type": "mssql",
+  "type": "sqlite",
   "host": "localhost",
-  "port": 1433,
-  "username": "sa",
-  "password": "0N@BJ44o",
-  "database": "ignicaoCRUD",
+  "database": "./data/clients.db",
   "synchronize": true,
   "logging": false,
   "entities": ["src/models/**/*.js"],
