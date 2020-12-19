@@ -5,10 +5,14 @@ const Tag = require('../models/Tag.js');
 const ClientController = {
   async list(req, res) {
     try {
+      let filter = {};
+      if (req.query.name) {
+        filter.name = req.query.name;
+      }
       const repo = getRepository(Client);
-      // filtra os clientes se passar um filtro no body
+      // filtra os clientes se passar um filtro no parametro passado como query string
       const client = await repo.find({
-        where: req.body,
+        where: filter,
         relations: ['tags'],
       });
 
