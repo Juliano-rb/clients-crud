@@ -47,7 +47,7 @@ export default {
   methods: {
     fetchClients() {
       axios
-        .get("http://localhost:3333/client")
+        .get(`${process.env.VUE_APP_SERVER_URL}/client`)
         .then((response) => {
           // handle success
           console.log(response);

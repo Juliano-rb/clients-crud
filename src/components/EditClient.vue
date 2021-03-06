@@ -41,7 +41,7 @@ export default {
   methods: {
     fetchClient() {
       axios
-        .get(`http://localhost:3333/client/${this.$route.params.id}`)
+        .get(`${process.env.VUE_APP_SERVER_URL}/client/${this.$route.params.id}`)
         .then((response) => {
           // handle success
           console.log(response);
@@ -67,14 +67,14 @@ export default {
       // update
       if (clientId)
         axios
-          .patch(`http://localhost:3333/client/${this.$route.params.id}`, data)
+          .patch(`${process.env.VUE_APP_SERVER_URL}/client/${this.$route.params.id}`, data)
           .then((response) => {
             console.log(response);
             this.$router.push("/");
           });
       // create new
       else
-        axios.post(`http://localhost:3333/client`, data).then((response) => {
+        axios.post(`${process.env.VUE_APP_SERVER_URL}/client`, data).then((response) => {
           console.log(response);
           this.$router.push("/");
         });
