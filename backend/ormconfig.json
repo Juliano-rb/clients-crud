@@ -1,0 +1,15 @@
+{
+  "type": "sqlite",
+  "host": "localhost",
+  "database": "./data/clients.db",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/models/**/*.js"],
+  "migrations": ["src/migration/**/*.js"],
+  "subscribers": ["src/subscriber/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
