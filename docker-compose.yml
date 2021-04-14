@@ -1,0 +1,22 @@
+services:
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "3333:3333"
+    command: npm run start
+
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/frontend
+    #   # One-way volume to use node_modules from inside image
+    #   - /app/node_modules
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    command: npm run serve
